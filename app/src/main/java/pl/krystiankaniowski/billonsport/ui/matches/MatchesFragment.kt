@@ -1,22 +1,22 @@
-package pl.krystiankaniowski.billonsport.ui.players
+package pl.krystiankaniowski.billonsport.ui.matches
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.github.salomonbrys.kodein.*
 import com.github.salomonbrys.kodein.android.appKodein
 
-class PlayersFragment : Fragment(), PlayersContract.View, KodeinInjected {
+class MatchesFragment : Fragment(), MatchesContract.View, KodeinInjected {
 
 	override val injector = KodeinInjector()
 
-	private val presenter : PlayersContract.Presenter by injector.instance()
+	private val presenter: MatchesContract.Presenter by injector.instance()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
 		val kodein = Kodein {
 			extend(appKodein())
-			bind<PlayersContract.Presenter>() with provider { PlayersPresenter() }
+			bind<MatchesContract.Presenter>() with provider { MatchesPresenter() }
 		}
 
 		injector.injector.inject(kodein)
@@ -37,7 +37,7 @@ class PlayersFragment : Fragment(), PlayersContract.View, KodeinInjected {
 		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 	}
 
-	override fun showItems(items: List<PlayersContract.Player>) {
+	override fun showItems(items: List<MatchesContract.Match>) {
 		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 	}
 
