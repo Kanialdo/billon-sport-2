@@ -1,3 +1,5 @@
 <resources>
 	<string name="app_name">Billon Sport</string>
+	<string name="title_matches">Matches</string>
+	<string name="title_players">Players</string>
 </resources>
