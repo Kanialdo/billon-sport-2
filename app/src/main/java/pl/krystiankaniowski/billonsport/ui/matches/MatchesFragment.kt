@@ -1,52 +1,27 @@
 package pl.krystiankaniowski.billonsport.ui.matches
 
-import android.os.Bundle
-import android.support.v4.app.Fragment
-import com.github.salomonbrys.kodein.*
+import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.android.appKodein
+import com.github.salomonbrys.kodein.bind
+import com.github.salomonbrys.kodein.instance
+import com.github.salomonbrys.kodein.provider
+import pl.krystiankaniowski.billonsport.ui.base.BaseListFragment
 
-class MatchesFragment : Fragment(), MatchesContract.View, KodeinInjected {
+class MatchesFragment : BaseListFragment<MatchesContract.Match>(), MatchesContract.View {
 
-	override val injector = KodeinInjector()
+	override fun kodein(base: Kodein) = Kodein {
+		extend(appKodein())
+		bind<MatchesContract.Presenter>() with provider { MatchesPresenter() }
+	}
 
 	private val presenter: MatchesContract.Presenter by injector.instance()
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-
-		val kodein = Kodein {
-			extend(appKodein())
-			bind<MatchesContract.Presenter>() with provider { MatchesPresenter() }
-		}
-
-		injector.injector.inject(kodein)
-
-	}
-
-	override fun onResume() {
-		super.onResume()
+	override fun subscribePresenter() {
 		presenter.subscribe(this)
 	}
 
-	override fun onPause() {
+	override fun unsubscribePresenter() {
 		presenter.unsubscribe()
-		super.onPause()
-	}
-
-	override fun showLoading() {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-	}
-
-	override fun showItems(items: List<MatchesContract.Match>) {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-	}
-
-	override fun showNoData() {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-	}
-
-	override fun showLoadingError(message: String) {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 	}
 
 }
