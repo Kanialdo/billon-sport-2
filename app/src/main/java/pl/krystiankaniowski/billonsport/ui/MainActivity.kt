@@ -8,6 +8,7 @@ import com.github.salomonbrys.kodein.KodeinInjector
 import com.github.salomonbrys.kodein.android.appKodein
 import kotlinx.android.synthetic.main.activity_main.*
 import pl.krystiankaniowski.billonsport.R
+import pl.krystiankaniowski.billonsport.ui.players.PlayersFragment
 
 class MainActivity : AppCompatActivity(), KodeinInjected {
 
@@ -25,11 +26,10 @@ class MainActivity : AppCompatActivity(), KodeinInjected {
 	private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 		when (item.itemId) {
 			R.id.navigation_players -> {
-				message.setText(R.string.title_players)
+				supportFragmentManager.beginTransaction().replace(frame.id, PlayersFragment()).commit()
 				return@OnNavigationItemSelectedListener true
 			}
 			R.id.navigation_matches -> {
-				message.setText(R.string.title_matches)
 				return@OnNavigationItemSelectedListener true
 			}
 		}
