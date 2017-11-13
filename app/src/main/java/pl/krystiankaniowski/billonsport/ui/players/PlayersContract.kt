@@ -1,10 +1,17 @@
 package pl.krystiankaniowski.billonsport.ui.players
 
 import pl.krystiankaniowski.billonsport.mvp.BaseListContract
+import pl.krystiankaniowski.billonsport.view.adapter.ViewType
 
 interface PlayersContract {
 
-	data class Player(val id: String, val name: String) : BaseListContract.ListItem
+	data class Player(val id: String, val name: String) : ViewType {
+
+		fun ViewType.Companion.PLAYER() = ViewType.autoId
+
+		override val viewType: Int = ViewType.PLAYER()
+
+	}
 
 	interface View : BaseListContract.View<Player>
 

@@ -1,10 +1,10 @@
 package pl.krystiankaniowski.billonsport.mvp
 
+import pl.krystiankaniowski.billonsport.view.adapter.ViewType
+
 interface BaseListContract {
 
-	interface ListItem
-
-	interface View<in I : ListItem> : BaseContract.View {
+	interface View<in I : ViewType> : BaseContract.View {
 
 		fun showLoading()
 
