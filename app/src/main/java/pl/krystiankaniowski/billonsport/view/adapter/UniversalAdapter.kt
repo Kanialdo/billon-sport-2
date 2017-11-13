@@ -41,6 +41,7 @@ class UniversalAdapter(private var items: List<ViewType>? = null) : RecyclerView
 
 	fun setData(data: List<ViewType>) {
 		items = data
+		notifyDataSetChanged()
 	}
 
 	class Builder {

@@ -1,15 +1,14 @@
 package pl.krystiankaniowski.billonsport.ui.matches
 
-class MatchesPresenter : MatchesContract.Presenter {
+import pl.krystiankaniowski.billonsport.ui.base.BasePresenter
 
-	private var view: MatchesContract.View? = null
+class MatchesPresenter : BasePresenter<MatchesContract.View>(), MatchesContract.Presenter {
 
-	override fun subscribe(view: MatchesContract.View) {
-		this.view = view
+	override fun onSubscribe() {
+		view?.showNoData()
 	}
 
-	override fun unsubscribe() {
-		view = null
+	override fun onUnsubscribe() {
 	}
 
 }
