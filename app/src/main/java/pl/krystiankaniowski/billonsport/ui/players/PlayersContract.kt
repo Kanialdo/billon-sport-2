@@ -7,9 +7,11 @@ interface PlayersContract {
 
 	data class Player(val id: String, val name: String) : ViewType {
 
-		fun ViewType.Companion.PLAYER() = ViewType.autoId
+		companion object {
+			val viewType = ViewType.autoId
+		}
 
-		override val viewType: Int = ViewType.PLAYER()
+		override val viewType: Int = Player.viewType
 
 	}
 

@@ -5,20 +5,10 @@ import android.support.v4.util.SparseArrayCompat
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.ViewGroup
-import pl.krystiankaniowski.billonsport.view.adapter.delegates.DelegatedLoadingAdapter
 
 class UniversalAdapter(private var items: List<ViewType>? = null) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 	private val delegatedAdapters = SparseArrayCompat<ViewTypeDelegatedAdapter>()
-
-	init {
-		delegatedAdapters.put(0, DelegatedLoadingAdapter())
-	}
-
-	fun registerDelegatedAdapter(adapter: ViewTypeDelegatedAdapter) {
-		Log.v(TAG, "registering ${adapter.viewType} with $adapter")
-		delegatedAdapters.put(adapter.viewType, adapter)
-	}
 
 	override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
@@ -42,6 +32,11 @@ class UniversalAdapter(private var items: List<ViewType>? = null) : RecyclerView
 
 	override fun getItemCount(): Int {
 		return items?.size ?: 0
+	}
+
+	fun registerDelegatedAdapter(adapter: ViewTypeDelegatedAdapter) {
+		Log.v(TAG, "registering ${adapter.viewType} with $adapter")
+		delegatedAdapters.put(adapter.viewType, adapter)
 	}
 
 	fun setData(data: List<ViewType>) {
