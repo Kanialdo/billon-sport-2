@@ -5,7 +5,7 @@ import pl.krystiankaniowski.billonsport.mvp.BaseContract
 
 abstract class BasePresenter<View : BaseContract.View> : BaseContract.Presenter<View> {
 
-	protected var view: View? = null
+	internal var view: View? = null
 
 	@CallSuper
 	override fun subscribe(view: View) {
