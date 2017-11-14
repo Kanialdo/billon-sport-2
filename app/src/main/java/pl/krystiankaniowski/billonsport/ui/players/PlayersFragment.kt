@@ -12,7 +12,7 @@ class PlayersFragment : BaseListFragment<PlayersContract.Player>(), PlayersContr
 
 	override fun kodein(base: Kodein): Kodein = Kodein {
 		extend(appKodein())
-		bind<PlayersContract.Presenter>() with provider { PlayersPresenter() }
+		bind<PlayersContract.Presenter>() with provider { PlayersPresenter(this) }
 	}
 
 	private val presenter: PlayersContract.Presenter by injector.instance()

@@ -5,10 +5,14 @@ import pl.krystiankaniowski.billonsport.view.adapter.ViewType
 
 interface PlayersContract {
 
-	data class Player(val id: String, val name: String) : ViewType {
+	class Player(val id: String, val name: String) : ViewType {
 
 		companion object {
+
 			val viewType = ViewType.autoId
+
+			fun convert(player: pl.krystiankaniowski.billonsport.model.Player) = Player(player.id, "")
+
 		}
 
 		override val viewType: Int = Player.viewType
