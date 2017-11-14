@@ -38,7 +38,7 @@ class DelegatedMessageAdapter : ViewTypeDelegatedAdapter {
 
 			title.text = type.title
 
-			if (type.description.isNotEmpty()) {
+			if (type.description != null && type.description.isNotEmpty()) {
 				details.visibility = View.VISIBLE
 				details.text = type.description
 			} else {
