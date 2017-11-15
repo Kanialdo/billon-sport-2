@@ -11,7 +11,7 @@ interface PlayersContract {
 
 			val viewType = ViewType.autoId
 
-			fun convert(player: pl.krystiankaniowski.billonsport.model.Player) = Player(player.id, "")
+			fun convert(player: pl.krystiankaniowski.billonsport.model.Player) = Player("", "")
 
 		}
 

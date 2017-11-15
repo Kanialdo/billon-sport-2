@@ -11,6 +11,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import pl.krystiankaniowski.billonsport.model.Hash
 import pl.krystiankaniowski.billonsport.model.Player
 import pl.krystiankaniowski.billonsport.repo.PlayersProvider
 
@@ -27,7 +28,7 @@ class PlayersPresenterTest {
 	@Before
 	fun init() {
 
-		Mockito.`when`(playersProvider.getAll()).thenReturn(listOf(Player("1"), Player("2"), Player("3")))
+		Mockito.`when`(playersProvider.getAll()).thenReturn(listOf(createNewPlayer(), createNewPlayer()))
 
 		val kodein = Kodein {
 			bind<PlayersProvider>() with singleton { playersProvider }
@@ -50,5 +51,7 @@ class PlayersPresenterTest {
 		verify(view, times(1)).showItems(any())
 		verify(view, never()).showNoData()
 	}
+
+	private fun createNewPlayer() = Player(Hash.create(), "", "", "", 0f, 0f)
 
 }
