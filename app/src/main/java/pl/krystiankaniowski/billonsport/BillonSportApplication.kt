@@ -14,6 +14,7 @@ class BillonSportApplication : Application(), KodeinAware {
 
 		bind<PlayersProvider>() with singleton {
 			object : PlayersProvider {
+				override fun insert(item: Player) {}
 				override fun get(id: String): Player? = null
 				override fun getAll(): List<Player> = listOf()
 			}
