@@ -1,6 +1,13 @@
 package pl.krystiankaniowski.billonsport.ui.base
 
 import android.os.Bundle
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import pl.krystiankaniowski.billonsport.R
 import pl.krystiankaniowski.billonsport.mvp.BaseListContract
 import pl.krystiankaniowski.billonsport.view.adapter.UniversalAdapter
 import pl.krystiankaniowski.billonsport.view.adapter.ViewType
@@ -11,6 +18,7 @@ import pl.krystiankaniowski.billonsport.view.items.MessageItem
 
 abstract class BaseListFragment<in Type : ViewType> : BaseFragment(), BaseListContract.View<Type> {
 
+	protected lateinit var recyclerView: RecyclerView
 	protected lateinit var adapter: UniversalAdapter
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +29,21 @@ abstract class BaseListFragment<in Type : ViewType> : BaseFragment(), BaseListCo
 				.register(DelegatedMessageAdapter())
 
 		adapter = createAdapter(builder).build()
+
+	}
+
+	override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+		val view = inflater?.inflate(R.layout.fragment_list, container, false)
+
+		recyclerView = view?.findViewById(android.R.id.list)!!
+
+		recyclerView.setHasFixedSize(true)
+		recyclerView.adapter = adapter
+		recyclerView.layoutManager = LinearLayoutManager(context)
+		recyclerView.itemAnimator = DefaultItemAnimator()
+
+		return view
 
 	}
 
