@@ -6,6 +6,4 @@ data class RankChange(
 		val matchId: Hash,
 		val rankType: RankType,
 		val rank: Float,
-		val rankDeviation: Float,
-		val newRank: Float,
-		val newRankDeviation: Float)
+		val rankDeviation: Float)

@@ -3,10 +3,12 @@ package pl.krystiankaniowski.billonsport.ui.addeditplayer
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.instanceOrNull
+import pl.krystiankaniowski.billonsport.R
 import pl.krystiankaniowski.billonsport.model.Hash
 import pl.krystiankaniowski.billonsport.model.Player
 import pl.krystiankaniowski.billonsport.repo.PlayersProvider
 import pl.krystiankaniowski.billonsport.ui.base.BasePresenter
+import pl.krystiankaniowski.billonsport.ui.utils.ViewData
 
 class AddEditPlayerPresenter(kodein: Kodein) : BasePresenter<AddEditPlayerContract.View>(), AddEditPlayerContract.Presenter {
 
@@ -26,8 +28,8 @@ class AddEditPlayerPresenter(kodein: Kodein) : BasePresenter<AddEditPlayerContra
 			id = Hash.create()
 		}
 
-		val player = Player(id!!, firstName, lastName, nickname, 0f, 0f)
 		playersProvider.insert(player)
+			val player = Player(id!!, firstName, lastName, nickname)
 
 	}
 

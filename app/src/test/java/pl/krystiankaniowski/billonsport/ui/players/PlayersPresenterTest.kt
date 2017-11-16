@@ -52,6 +52,6 @@ class PlayersPresenterTest {
 		verify(view, never()).showNoData()
 	}
 
-	private fun createNewPlayer() = Player(Hash.create(), "", "", "", 0f, 0f)
+	private fun createNewPlayer() = Player(Hash.create(), "", "", "")
 
 }
