@@ -24,12 +24,33 @@ class AddEditPlayerPresenter(kodein: Kodein) : BasePresenter<AddEditPlayerContra
 
 	override fun save(firstName: String, lastName: String, nickname: String) {
 
-		if (id == null) {
-			id = Hash.create()
+		var validation = true
+
+		if (firstName.isEmpty()) {
+			validation = false
+			view?.setFirstName(ViewData.error(firstName, R.string.error_field_cannot_be_empty))
 		}
 
-		playersProvider.insert(player)
+		if (lastName.isEmpty()) {
+			validation = false
+			view?.setLastName(ViewData.error(lastName, R.string.error_field_cannot_be_empty))
+		}
+
+		if (nickname.isEmpty()) {
+			validation = false
+			view?.setNickname(ViewData.error(nickname, R.string.error_field_cannot_be_empty))
+		}
+
+		if (validation) {
+
+			if (id == null) {
+				id = Hash.create()
+			}
+
 			val player = Player(id!!, firstName, lastName, nickname)
+			playersProvider.insert(player)
+
+		}
 
 	}
 

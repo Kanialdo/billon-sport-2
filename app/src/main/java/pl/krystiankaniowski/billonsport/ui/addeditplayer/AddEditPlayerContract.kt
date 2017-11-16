@@ -1,16 +1,17 @@
 package pl.krystiankaniowski.billonsport.ui.addeditplayer
 
 import pl.krystiankaniowski.billonsport.mvp.BaseContract
+import pl.krystiankaniowski.billonsport.ui.utils.ViewData
 
 interface AddEditPlayerContract {
 
 	interface View : BaseContract.View {
 
-		fun setFirstName(firstName: String)
+		fun setFirstName(firstName: ViewData<String>)
 
-		fun setLastName(lastName: String)
+		fun setLastName(lastName: ViewData<String>)
 
-		fun setNickname(nickname: String)
+		fun setNickname(nickname: ViewData<String>)
 
 	}
 

@@ -3,4 +3,9 @@
 	<string name="title_matches">Matches</string>
 	<string name="title_players">Players</string>
 	<string name="lorem_ipsum">lorem ipsum</string>
+	<string name="error_field_cannot_be_empty">Field cannot be empty</string>
+	<string name="action_save">save</string>
+	<string name="label_nickname">Nickname</string>
+	<string name="label_last_name">Last name</string>
+	<string name="label_first_name">First name</string>
 </resources>
